@@ -64,6 +64,12 @@ final class UITableViewExtensionsTests: XCTestCase {
         tableView.removeTableHeaderView()
         XCTAssertNil(tableView.tableHeaderView)
     }
+    
+    func testDequeueReusableCell() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
+        let cell : UITableViewCell = tableView.dequeueReusableCell()
+        XCTAssertNotNil(cell)
+    }
 
     func testDequeueReusableCellWithClass() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")

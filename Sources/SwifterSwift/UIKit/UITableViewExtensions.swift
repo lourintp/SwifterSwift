@@ -67,6 +67,17 @@ public extension UITableView {
         tableHeaderView = nil
     }
 
+    /// SwifterSwift: Dequeue reusable UITableViewCell using type name..
+    ///
+    /// - Returns: UITableViewCell object with associated class name.
+    func dequeueReusableCell<T: UITableViewCell>() -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: String(describing: T.self)) as? T else {
+            fatalError(
+                "Couldn't find UITableViewCell for \(String(describing: T.self)), make sure the cell is registered with table view")
+        }
+        return cell
+    }
+    
     /// SwifterSwift: Dequeue reusable UITableViewCell using class name.
     ///
     /// - Parameter name: UITableViewCell type.
